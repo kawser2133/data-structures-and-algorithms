@@ -8,8 +8,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Stacks\Stacks.csproj" />
-  </ItemGroup>
-
 </Project>
