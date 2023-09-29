@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Stacks;
+
+DSA_Stacks stacks = new DSA_Stacks();
+//stacks.StackCommonFeatures();
+stacks.StackSearchFeatures();
+
+Console.ReadLine();

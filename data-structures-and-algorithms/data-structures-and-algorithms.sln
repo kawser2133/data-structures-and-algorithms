@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data-structures-and-algorithms", "data-structures-and-algorithms\data-structures-and-algorithms.csproj", "{AC63798D-16D2-4675-87BF-5EDA43876E75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stacks", "Stacks\Stacks.csproj", "{717B37ED-1315-4E48-914A-2D6E47BE5DDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AC63798D-16D2-4675-87BF-5EDA43876E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC63798D-16D2-4675-87BF-5EDA43876E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC63798D-16D2-4675-87BF-5EDA43876E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{717B37ED-1315-4E48-914A-2D6E47BE5DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717B37ED-1315-4E48-914A-2D6E47BE5DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717B37ED-1315-4E48-914A-2D6E47BE5DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717B37ED-1315-4E48-914A-2D6E47BE5DDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
