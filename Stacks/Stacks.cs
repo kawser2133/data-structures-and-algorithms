@@ -2,6 +2,9 @@
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
 using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics.Metrics;
+using System.Runtime.InteropServices;
 
 namespace Stacks
 {
@@ -226,14 +229,27 @@ namespace Stacks
             {
                 result[i] = nextGreater.ContainsKey(nums1[i]) ? nextGreater[nums1[i]] : -1;
             }
-
             return result;
         }
 
         #endregion
 
+        #region Q5. Daily Temperatures
+        //https://leetcode.com/problems/daily-temperatures/
+        //Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature.If there is no future day for which this is possible, keep answer[i] == 0 instead.
 
+        //Example 1:
+        //Input: temperatures = [73,74,75,71,69,72,76,73]
+        //Output: [1,1,4,2,1,1,0,0]
 
+        public int[] DailyTemperatures(int[] temperatures)
+        {
+            int[] result = new int[temperatures.Length];
+
+            return result;
+        }
+
+        #endregion
     }
 
     #region Q3. Min Stack
