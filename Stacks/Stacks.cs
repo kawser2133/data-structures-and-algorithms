@@ -1,4 +1,8 @@
 ﻿
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
+using System;
+
 namespace Stacks
 {
     public class DSA_Stacks
@@ -87,6 +91,77 @@ namespace Stacks
                 Console.WriteLine($"Not found the value");
 
         }
+    }
+
+    public class Solutions
+    {
+        #region Q1. Backspace String Compare
+        //Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+        //Note that after backspacing an empty text, the text will continue empty.
+
+        //Example 1:
+
+        //Input: s = "ab#c", t = "ad#c"
+        //Output: true
+        //Explanation: Both s and t become "ac".
+
+        public bool BackspaceCompare(string s, string t)
+        {
+            Stack<char> sStack = new Stack<char>();
+            Stack<char> tStack = new Stack<char>();
+
+            foreach (char c in s)
+            {
+                if (c != '#')
+                {
+                    sStack.Push(c);
+                }
+                else if (sStack.Count > 0)
+                {
+                    sStack.Pop();
+                }
+            }
+
+            foreach (char c in t)
+            {
+                if (c != '#')
+                {
+                    tStack.Push(c);
+                }
+                else if (tStack.Count > 0)
+                {
+                    tStack.Pop();
+                }
+            }
+
+            if (sStack.Count != tStack.Count)
+            {
+                return false;
+            }
+
+            while (sStack.Count > 0)
+            {
+                if (sStack.Pop() != tStack.Pop())
+                    return false;
+            }
+
+            return true;
+
+        }
+        #endregion
+
+        #region Q2. Valid Parentheses
+        //https://leetcode.com/problems/valid-parentheses/
+        //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+        //An input string is valid if:
+        //Open brackets must be closed by the same type of brackets.
+        //Open brackets must be closed in the correct order.
+        //Every close bracket has a corresponding open bracket of the same type.
+
+        //Example 1:
+        //Input: s = "()"
+        //Output: true
 
         public bool IsValid(string s)
         {
@@ -114,6 +189,117 @@ namespace Stacks
 
             return stack.Count == 0;
         }
+        #endregion
+
+        #region Q4. Next Greater Element I
+        //The next greater element of some element x in an array is the first greater element that is to the right of x in the same array.
+
+        //You are given two distinct 0-indexed integer arrays nums1 and nums2, where nums1 is a subset of nums2.
+        //For each 0 <= i<nums1.length, find the index j such that nums1[i] == nums2[j] and determine the next greater element of nums2[j] in nums2.If there is no next greater element, then the answer for this query is -1.
+        //Return an array ans of length nums1.length such that ans[i] is the next greater element as described above.
+
+        //Example 1:
+        //Input: nums1 = [4, 1, 2], nums2 = [1, 3, 4, 2]
+        //Output: [-1,3,-1]
+        //Explanation: The next greater element for each value of nums1 is as follows:
+        //- 4 is underlined in nums2 = [1, 3, 4, 2].There is no next greater element, so the answer is -1.
+        //- 1 is underlined in nums2 = [1, 3, 4, 2].The next greater element is 3.
+        //- 2 is underlined in nums2 = [1, 3, 4, 2].There is no next greater element, so the answer is -1.
+
+        public int[] NextGreaterElement(int[] nums1, int[] nums2)
+        {
+
+            Stack<int> stack = new Stack<int>();
+            Dictionary<int, int> nextGreater = new Dictionary<int, int>();
+            int[] result = new int[nums1.Length];
+
+            foreach (var item in nums2)
+            {
+                while (stack.Count > 0 && item > stack.Peek())
+                {
+                    nextGreater[stack.Pop()] = item;
+                }
+                stack.Push(item);
+            }
+
+            for (int i = 0; i < nums1.Length; i++)
+            {
+                result[i] = nextGreater.ContainsKey(nums1[i]) ? nextGreater[nums1[i]] : -1;
+            }
+
+            return result;
+        }
+
+        #endregion
+
+
 
     }
+
+    #region Q3. Min Stack
+    //https://leetcode.com/problems/min-stack/
+    //Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+    //Implement the MinStack class:
+
+    //MinStack() initializes the stack object.
+    //void push(int val) pushes the element val onto the stack.
+    //void pop() removes the element on the top of the stack.
+    //int top() gets the top element of the stack.
+    //int getMin() retrieves the minimum element in the stack.
+    //You must implement a solution with O(1) time complexity for each function.
+
+    //Example 1:
+
+    //Input
+    //["MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"]
+    //[[], [-2], [0], [-3], [], [], [], []]
+    //Output
+    //[null, null, null, null, -3, null, 0, -2]
+
+    public class MinStack
+    {
+
+        private Stack<int> inputStack;
+
+        public MinStack()
+        {
+            inputStack = new Stack<int>();
+        }
+
+        public void Push(int val)
+        {
+            inputStack.Push(val);
+        }
+
+        public void Pop()
+        {
+            if (inputStack.Count > 0)
+                inputStack.Pop();
+            else
+                throw new InvalidOperationException("Stack is empty");
+        }
+
+        public int Top()
+        {
+            if (inputStack.Count > 0)
+            {
+                return inputStack.Peek();
+            }
+            else
+                throw new InvalidOperationException("Stack is empty");
+        }
+
+        public int GetMin()
+        {
+            if (inputStack.Count > 0)
+            {
+                return inputStack.Min();
+            }
+            else
+                throw new InvalidOperationException("Stack is empty");
+        }
+    }
+    #endregion
+
 }

@@ -43,7 +43,7 @@ namespace LinkedList
             }
 
             // Adding Elements at the Beginning
-            myList.AddFirst(-1);
+            myList.AddFirst(9);
 
             // Accessing Elements Again
             Console.WriteLine("\nUpdated Elements:");
