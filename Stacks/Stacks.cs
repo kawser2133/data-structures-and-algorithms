@@ -245,6 +245,24 @@ namespace Stacks
         public int[] DailyTemperatures(int[] temperatures)
         {
             int[] result = new int[temperatures.Length];
+            Stack<int> stack = new Stack<int>();
+
+            for (int i = 0; i < temperatures.Length; i++)
+            {
+
+                if (stack.Count > 0)
+                {
+                    if (temperatures[i] > stack.Peek() )
+                    {
+                        result[i] = temperatures[i] - stack.Pop();
+                    }
+                    else
+                    {
+                        stack.Pop();
+                    }
+                }
+                stack.Push(temperatures[i]);
+            }
 
             return result;
         }
