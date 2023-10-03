@@ -27,6 +27,6 @@ solutions.NextGreaterElement(nums1, nums2);
 int[] temperatures = { 73, 74, 75, 71, 69, 72, 76, 73 };
 var result = solutions.DailyTemperatures(temperatures);
 
-
-Console.WriteLine(result);
+var printData = string.Join(Environment.NewLine, result);
+Console.WriteLine(printData);
 Console.ReadLine();

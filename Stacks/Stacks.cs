@@ -252,12 +252,20 @@ namespace Stacks
 
                 if (stack.Count > 0)
                 {
-                    if (temperatures[i] > stack.Peek() )
+                    if (temperatures[i] > stack.Peek())
                     {
                         result[i] = temperatures[i] - stack.Pop();
                     }
                     else
                     {
+                        for (int j = i + 1; j < temperatures.Length; j++)
+                        {
+                            if (temperatures[i] > temperatures[j])
+                            {
+                                result[i] = temperatures[i] - stack.Pop();
+                            }
+                        }
+
                         stack.Pop();
                     }
                 }
